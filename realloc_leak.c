@@ -25,3 +25,15 @@ int main() {
     free(tmp);  // free final memory
     return 0;
 }
+----------------------------------------------------------------------------------------
+
+    #include <stdlib.h>
+
+int main() {
+    int *p = malloc(5 * sizeof(int));
+
+    // ❌ Wrong: if realloc fails, old pointer is lost
+    p = realloc(p, 10 * sizeof(int));
+    if (p == NULL)
+        return -1;
+}
